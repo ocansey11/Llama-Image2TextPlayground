@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ImageUpload from './components/ImageUpload';
+import ImageDisplay from './components/ImageDisplay';
+import DataTable from './components/DataTable';
 
 function App() {
+  const [image, setImage] = useState(null);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Image Upload and Display</h1>
       </header>
+      <ImageUpload setImage={setImage} />
+      <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
+        <ImageDisplay image={image} />
+        <DataTable />
+      </div>
     </div>
   );
 }
